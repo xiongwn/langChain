@@ -1,7 +1,7 @@
 import os
-os.environ["OPENAI_API_KEY"] = "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"
-os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
-os.environ["COHERE_API_KEY"] = "MYyesFr5qANJIB3ONOPK5MCqxZoHpu2ZD5D60cNU"
+os.environ["OPENAI_API_KEY"] = "sk-"
+os.environ["HUGGINGFACEHUB_API_TOKEN"] = "hf_Rpsd"
+os.environ["COHERE_API_KEY"] = "MYyesFr5qANJ"
 from langchain.agents import initialize_agent, Tool
 from langchain.agents import AgentType
 from langchain.llms import OpenAI
