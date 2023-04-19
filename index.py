@@ -1,5 +1,5 @@
 import os
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "sk-"
 
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
