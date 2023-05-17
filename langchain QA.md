@@ -4,6 +4,8 @@
 
 代码 [https://github.com/xiongwn/langChain](https://github.com/xiongwn/langChain)
 
+据说有隐患但是我没复现 [https://twitter.com/rharang/status/1641899743608463365](https://twitter.com/rharang/status/1641899743608463365)
+
 # 怎么构建知识库
 
 利用langchain提供的loader加载资源
