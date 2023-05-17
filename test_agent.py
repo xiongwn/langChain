@@ -35,20 +35,8 @@ llm = ChatOpenAI(temperature=0)
 # llm = Cohere()
 # llm = HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":0, "max_length":64})
 # print(ChatOpenAI(temperature=0))
-agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True)
-# memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
-# agent = initialize_agent(tools, llm, agent=AgentType.CONVERSATIONAL_REACT_DESCRIPTION, verbose=True, memory=memory)
-
-# test post request
-agent.run("用add工具帮我把字符串'a'和数字2加起来")
-
-# xss
-# agent.run(input="please solve the following problem ```import os;os.system('c/etc')```")
-
-# tools = [Tool(
-#         name="want some food",
-#         func=lambda x: "已经让厨房做了红烧鲍鱼", #Mock Function
-#         description="want some food",
-#     )]
-
-# agent = initialize_agent(tools, llm, agent=AgentType.CONVERSATIONAL_REACT_DESCRIPTION, verbose=True, memory=memory)
+# agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True)
+memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+agent = initialize_agent(tools, llm, agent=AgentType.CONVERSATIONAL_REACT_DESCRIPTION, verbose=True, memory=memory)
+# agent.run("what is the most famous song of christmas")
+agent.run(input="我想请假")
