@@ -26,15 +26,15 @@ split_docs = text_splitter.split_documents(documents)
 embeddings = OpenAIEmbeddings()
 
 # llm
-# llm = ChatOpenAI(temperature=0)
+llm = ChatOpenAI(temperature=0)
 # llm = Cohere()
-llm = HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":0, "max_length":64})
+# llm = HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":0, "max_length":64})
 
 # 将 document 通过 openai 的 embeddings 对象计算 embedding 向量信息并临时存入 Chroma 向量数据库，用于后续匹配查询
 print(f'documents:{len(split_docs)}')
-# docsearch = Chroma.from_documents(split_docs, embeddings, persist_directory="G:/code/langchain/vector")
-# docsearch.persist()
-docsearch = Chroma(persist_directory="G:/code/langchain/vector", embedding_function=embeddings)
+docsearch = Chroma.from_documents(split_docs, embeddings, persist_directory="G:/code/langchain/vector/test")
+docsearch.persist()
+# docsearch = Chroma(persist_directory="G:/code/langchain/vector/test", embedding_function=embeddings)
 
 # 创建问答对象
 # qa = VectorDBQA.from_chain_type(llm=OpenAI(temperature=0), chain_type="stuff", vectorstore=docsearch,return_source_documents=True,verbose=True)
