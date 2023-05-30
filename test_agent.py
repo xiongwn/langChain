@@ -1,7 +1,7 @@
 import os
 import json
 import requests
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "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"
 os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
 os.environ["COHERE_API_KEY"] = "MYyesFr5qANJIB3ONOPK5MCqxZoHpu2ZD5D60cNU"
 from langchain.agents import initialize_agent, Tool
@@ -17,7 +17,7 @@ def post(paramString):
 tools = [
     Tool(
         name="apply for leave",
-        func=lambda x: "已经成功帮你申请请假", #Mock Function
+        func=lambda x: "已经成功申请请假", #Mock Function
         description="apply for leave",
     ),
     Tool(
@@ -39,4 +39,4 @@ llm = ChatOpenAI(temperature=0)
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 agent = initialize_agent(tools, llm, agent=AgentType.CONVERSATIONAL_REACT_DESCRIPTION, verbose=True, memory=memory)
 # agent.run("what is the most famous song of christmas")
-agent.run(input="我想请假")
+print("result",agent.run(input="帮我请假"))

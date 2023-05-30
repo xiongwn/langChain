@@ -1,5 +1,5 @@
 import os
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "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"
 os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
 os.environ["COHERE_API_KEY"] = "MYyesFr5qANJIB3ONOPK5MCqxZoHpu2ZD5D60cNU"
 
@@ -26,8 +26,8 @@ split_docs = text_splitter.split_documents(documents)
 embeddings = OpenAIEmbeddings()
 
 # llm
-llm = ChatOpenAI(temperature=0)
-# llm = Cohere()
+# llm = ChatOpenAI(temperature=0)
+llm = Cohere()
 # llm = HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":0, "max_length":64})
 
 # 将 document 通过 openai 的 embeddings 对象计算 embedding 向量信息并临时存入 Chroma 向量数据库，用于后续匹配查询
@@ -40,7 +40,7 @@ docsearch.persist()
 # qa = VectorDBQA.from_chain_type(llm=OpenAI(temperature=0), chain_type="stuff", vectorstore=docsearch,return_source_documents=True,verbose=True)
 qa = RetrievalQA.from_chain_type(llm, chain_type="map_reduce", retriever=docsearch.as_retriever(),verbose=True)
 # 进行问答
-result = qa({"query": "总结4月12日east的突破"})
+result = qa({"query": "总结4月12日east的突破,用中文总结"})
 print(result["result"])
 
 # docsearch.delete_collection()
